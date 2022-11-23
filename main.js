@@ -30,6 +30,7 @@ function getUserData() {
 
 window.addEventListener('load', () => {
     registerSW();
+    getUserData()
   });
 
 async function registerSW() {
