@@ -17,18 +17,25 @@ function getUserData() {
             } 
 
             
-            if (Math.round(localStorage.getItem(`${response.data.base}-PriceFirst`)) != Math.round(response.data.amount)) {
-                Notification.requestPermission().then(perm => {
-                    if (perm === "granted") {
-                        new Notification("You have a notification", {
-                            body: `The price on ${response.data.base} has changed was this: ${Math.round(localStorage.getItem(`${response.data.base}-PriceFirst`))} ${response.data.currency} and has changed to this ${Math.round(response.data.amount)} ${response.data.currency}`
-                        })
-                    }
-                })
-            }            
+            // if (Math.round(localStorage.getItem(`${response.data.base}-PriceFirst`)) != Math.round(response.data.amount)) {
+            //     Notification.requestPermission().then(perm => {
+            //         if (perm === "granted") {
+            //             new Notification("You have a notification", {
+            //                 body: `The price on ${response.data.base} has changed was this: ${Math.round(localStorage.getItem(`${response.data.base}-PriceFirst`))} ${response.data.currency} and has changed to this ${Math.round(response.data.amount)} ${response.data.currency}`
+            //             })
+            //         }
+            //     })
+            // }            
 
         })
     }
+    Notification.requestPermission().then(perm => {
+        if (perm === "granted") {
+            new Notification("You have a notification", {
+                body: `The price changed`
+            })
+        }
+    })
 }
 
 window.addEventListener('load', () => {
