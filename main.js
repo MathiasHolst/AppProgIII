@@ -30,6 +30,7 @@ function getUserData() {
         })
     }
     Notification.requestPermission().then(perm => {
+        alert(perm)
         if (perm === "granted") {
             new Notification("You have a notification", {
                 body: `The price changed`
