@@ -11,8 +11,11 @@ function getUserData() {
             var listItem = document.getElementById(`item-${index+=1}`)
             listItem.innerHTML = `${response.data.base} koster lige nu ~${Math.round(response.data.amount * 10000) / 10000} ${response.data.currency}`
 
-            // var coinName = response.data.base + "-PriceFirst"
-            // localStorage.setItem(coinName, response.data.amount)
+            if (localStorage.getItem(`${response.data.base}-PriceFirst`) == null) {
+                var coinName = response.data.base + "-PriceFirst"
+                localStorage.setItem(coinName, response.data.amount)
+            } 
+
             
             if (Math.round(localStorage.getItem(`${response.data.base}-PriceFirst`)) != Math.round(response.data.amount)) {
                 Notification.requestPermission().then(perm => {
