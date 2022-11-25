@@ -36,6 +36,10 @@ function getUserData() {
     }
 }
 
+setInterval(() => {
+    getUserData()
+}, 30000);
+
 window.addEventListener('load', () => {
     registerSW();
     getUserData()
